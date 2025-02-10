@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:20:15 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/02/10 18:41:47 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/10 20:32:21 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 volatile sig_atomic_t	g_signa = BUSY;
 
-static void	handle_signa()
+static void	handle_signa(void)
 {
 	g_signa = READY;
 }
 
-void	end_hundler()
+void	end_hundler(void)
 {
 	ft_printf("📨 BOOM! Message delivered successfully! 🚀💌\n");
 	exit(EXIT_SUCCESS);

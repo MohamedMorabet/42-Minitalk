@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:27:04 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/02/10 18:35:19 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/10 20:32:38 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	get_pid(char *str)
 void	setup_signal(int signum, void *handler, bool use_sigaction)
 {
 	struct sigaction	sa;
-	//put the handler in the struct
+
 	if (use_sigaction)
 	{
 		sa.sa_flags = SA_SIGINFO;
