@@ -6,7 +6,7 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:27:04 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/01/31 19:20:19 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:35:19 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	get_pid(char *str)
 	return (server_pid);
 }
 
-void	Signal(int signum, void *handler, bool use_sigaction)
+void	setup_signal(int signum, void *handler, bool use_sigaction)
 {
 	struct sigaction	sa;
 	//put the handler in the struct
@@ -80,11 +80,6 @@ void	Signal(int signum, void *handler, bool use_sigaction)
 	}
 	else
 		sa.sa_handler = handler;
-	//block SIGUSR1 or SIGUSR2 when the handler is running
-	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
-	// call sigaction
 	if (sigaction(signum, &sa, NULL) < 0)
 	{
 		ft_printf("❌ sigaction failed\n");
@@ -92,11 +87,11 @@ void	Signal(int signum, void *handler, bool use_sigaction)
 	}
 }
 
-void Kill(pid_t pid, int signum)
+void	my_kill(pid_t pid, int signum)
 {
 	if (kill(pid, signum) < 0)
 	{
-		ft_printf("❌ kill failed\n");
+		ft_printf("❌ kill failed, Invalid pid\n");
 		exit(EXIT_FAILURE);
 	}
 }

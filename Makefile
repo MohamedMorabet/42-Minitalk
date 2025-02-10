@@ -1,6 +1,6 @@
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 NAME_CLIENT = client
 
@@ -16,6 +16,7 @@ SRC_CLIENT = client.c \
 	
 SRC_SERVER = server.c \
 		utils.c \
+		utils2.c \
 		printf/ft_printf.c \
 		printf/num_functions.c \
 		printf/str_functions.c \
@@ -27,10 +28,10 @@ OBJ_SERVER = $(SRC_SERVER:.c=.o)
 
 all: $(NAME_CLIENT) $(NAME_SERVER)
 
-$(NAME_CLIENT): $(OBJ_CLIENT)
+$(NAME_CLIENT): $(OBJ_CLIENT) minitalk.h
 	$(CC) $(CFLAGS) $(OBJ_CLIENT) -o $(NAME_CLIENT)
 
-$(NAME_SERVER): $(OBJ_SERVER)
+$(NAME_SERVER): $(OBJ_SERVER) minitalk.h
 	$(CC) $(CFLAGS) $(OBJ_SERVER) -o $(NAME_SERVER)
 
 %.o: %.c
