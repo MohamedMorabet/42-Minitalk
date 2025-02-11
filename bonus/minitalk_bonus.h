@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:21:18 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/02/10 20:59:44 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:21:20 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-# include "printf/ft_printf.h"
+# include "../printf/ft_printf.h"
 # include <signal.h>
 # include <unistd.h>
 # include <stdlib.h>

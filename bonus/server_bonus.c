@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:43:39 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/02/11 12:24:36 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/11 12:20:30 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 char	*g_str = NULL;
 
@@ -41,7 +41,7 @@ void	reset_message(pid_t *pid, int *len, int *buf_size, int new_pid)
 	g_str = allocate_buffer (INIT_SIZE);
 }
 
-void	process_byte(char *c, int *len, int *buffer_size)
+void	process_byte(char *c, int *len, int *buffer_size, pid_t *pid)
 {
 	if (*c == 0)
 	{
@@ -51,6 +51,7 @@ void	process_byte(char *c, int *len, int *buffer_size)
 			write(1, "\n", 1);
 		}
 		*len = 0;
+		my_kill(*pid, SIGUSR2);
 		return ;
 	}
 	g_str[(*len)++] = *c;
@@ -84,7 +85,7 @@ void	handle_signal(int sig, siginfo_t *info, void *context)
 	if (i == 8)
 	{
 		i = 0;
-		process_byte(&c, &len, &buffer_size);
+		process_byte(&c, &len, &buffer_size, &pid);
 	}
 	my_kill(pid, SIGUSR1);
 }
