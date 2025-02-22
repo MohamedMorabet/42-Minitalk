@@ -6,13 +6,13 @@
 /*   By: mel-mora <mel-mora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:20:15 by mel-mora          #+#    #+#             */
-/*   Updated: 2025/02/11 12:20:26 by mel-mora         ###   ########.fr       */
+/*   Updated: 2025/02/22 12:53:56 by mel-mora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-volatile sig_atomic_t	g_signa = BUSY;
+int	g_signa = BUSY;
 
 static void	handle_signa(void)
 {
